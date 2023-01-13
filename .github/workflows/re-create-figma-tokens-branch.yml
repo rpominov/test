@@ -9,10 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Test1
-        run: echo ${{ github.event }}
-
-      - name: Test2
-        run: echo $TEST
+      - name: Test
         env:
-          TESt: ${{ github.event }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
