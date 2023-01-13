@@ -2,6 +2,9 @@ name: Re-create branch for Figma tokens
 
 on: delete
 
+permissions:
+  contents: read|write
+
 jobs:
   main:
     runs-on: ubuntu-latest
