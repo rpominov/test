@@ -6,10 +6,14 @@ jobs:
   main:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+    if: ${{ github.event.ref == 'figma-tokens'}}
 
-      - name: Test
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Re-create branch
+        run: |
+          git checkoun main
+          git checkout -b figma-tokens
+          git push --set-upstream origin figma-tokens
